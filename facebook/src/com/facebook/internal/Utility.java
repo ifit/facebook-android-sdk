@@ -217,7 +217,12 @@ public final class Utility {
 
     public static void disconnectQuietly(URLConnection connection) {
         if (connection instanceof HttpURLConnection) {
-            ((HttpURLConnection)connection).disconnect();
+            try {
+                ((HttpURLConnection) connection).disconnect();
+            } catch (NullPointerException ex) {
+                //Never a good idea to swallow an exception, but HttpURLConnection is not our code and there is nothing we can do
+                //beyond this point.  The null pointer seems to lie somewhere in the HttpURLConnection class.
+            }
         }
     }
 
