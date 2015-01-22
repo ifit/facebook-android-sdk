@@ -303,7 +303,7 @@ public class LikeActionController {
                             broadcastContext.getSharedPreferences(LIKE_ACTION_CONTROLLER_STORE, Context.MODE_PRIVATE)
                                     .edit()
                                     .putInt(LIKE_ACTION_CONTROLLER_STORE_OBJECT_SUFFIX_KEY, objectSuffix)
-                                    .apply();
+                                    .commit();
 
                             // Only clearing the actual caches. The MRU index will self-clean with usage.
                             // Clearing the caches is necessary to prevent leaking like-state across sessions.
@@ -789,7 +789,7 @@ public class LikeActionController {
         context.getSharedPreferences(LIKE_ACTION_CONTROLLER_STORE, Context.MODE_PRIVATE)
                 .edit()
                 .putString(LIKE_ACTION_CONTROLLER_STORE_PENDING_OBJECT_ID_KEY, objectIdForPendingController)
-                .apply();
+                .commit();
     }
 
     private boolean canUseOGPublish() {

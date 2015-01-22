@@ -303,7 +303,12 @@ public final class Utility {
             }
         }
 
-        return Arrays.copyOf(outputRange, outputIndex);
+        int[] newArray = new int[outputIndex];
+        for(int i = 0; i < outputRange.length - 1; i++) {
+            newArray[i] = outputRange[i];
+        }
+
+        return newArray;
     }
 
     // Returns true iff all items in subset are in superset, treating null and
@@ -646,7 +651,7 @@ public final class Utility {
                             Context.MODE_PRIVATE);
                     sharedPrefs.edit()
                         .putString(settingsKey, resultJSON.toString())
-                        .apply();
+                        .commit();
                 }
 
                 initialAppSettingsLoadTask = null;

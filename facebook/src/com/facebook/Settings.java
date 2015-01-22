@@ -430,7 +430,7 @@ public final class Settings {
                     publishResponse.getGraphObject().getInnerJSONObject() != null) {
                     editor.putString(jsonKey, publishResponse.getGraphObject().getInnerJSONObject().toString());
                 }
-                editor.apply();
+                editor.commit();
 
                 return publishResponse;
             }
@@ -517,7 +517,7 @@ public final class Settings {
         context.getSharedPreferences(APP_EVENT_PREFERENCES, Context.MODE_PRIVATE)
             .edit()
             .putBoolean("limitEventUsage", limitEventUsage)
-            .apply();
+            .commit();
     }
 
     /**

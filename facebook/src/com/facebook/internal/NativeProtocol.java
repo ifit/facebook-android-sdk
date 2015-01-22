@@ -697,38 +697,38 @@ public final class NativeProtocol {
         // Remember that these ranges are sorted in ascending order and can be unbounded. So we are starting
         // from the end of the version-spec array and working backwards, to try get the newest possible version
         int versionSpecIndex = versionSpec.length - 1;
-        Iterator<Integer> fbAppVersionsIterator = allAvailableFacebookAppVersions.descendingIterator();
-        int latestFacebookAppVersion = -1;
-
-        while (fbAppVersionsIterator.hasNext()) {
-            int fbAppVersion = fbAppVersionsIterator.next();
-
-            // We're holding on to the greatest fb-app version available.
-            latestFacebookAppVersion = Math.max(latestFacebookAppVersion, fbAppVersion);
-
-            // If there is a newer version in the versionSpec, throw it away, we don't have it
-            while (versionSpecIndex >= 0 && versionSpec[versionSpecIndex] > fbAppVersion) {
-                versionSpecIndex--;
-            }
-
-            if (versionSpecIndex < 0) {
-                // There was no fb app version that fell into any range in the versionSpec - or - the
-                // versionSpec was empty, which means that this action is not supported.
-                return NO_PROTOCOL_AVAILABLE;
-            }
-
-            // If we are here, we know we are within a range specified in the versionSpec. We should see if it is
-            // a disabled or enabled range.
-
-            if (versionSpec[versionSpecIndex] == fbAppVersion) {
-                // if the versionSpecIndex is even, it is enabled; if odd, disabled
-                return (
-                        versionSpecIndex % 2 == 0 ?
-                                Math.min(latestFacebookAppVersion, latestSdkVersion) :
-                                NO_PROTOCOL_AVAILABLE
-                );
-            }
-        }
+//        Iterator<Integer> fbAppVersionsIterator = allAvailableFacebookAppVersions.descendingIterator();
+//        int latestFacebookAppVersion = -1;
+//
+//        while (fbAppVersionsIterator.hasNext()) {
+//            int fbAppVersion = fbAppVersionsIterator.next();
+//
+//            // We're holding on to the greatest fb-app version available.
+//            latestFacebookAppVersion = Math.max(latestFacebookAppVersion, fbAppVersion);
+//
+//            // If there is a newer version in the versionSpec, throw it away, we don't have it
+//            while (versionSpecIndex >= 0 && versionSpec[versionSpecIndex] > fbAppVersion) {
+//                versionSpecIndex--;
+//            }
+//
+//            if (versionSpecIndex < 0) {
+//                // There was no fb app version that fell into any range in the versionSpec - or - the
+//                // versionSpec was empty, which means that this action is not supported.
+//                return NO_PROTOCOL_AVAILABLE;
+//            }
+//
+//            // If we are here, we know we are within a range specified in the versionSpec. We should see if it is
+//            // a disabled or enabled range.
+//
+//            if (versionSpec[versionSpecIndex] == fbAppVersion) {
+//                // if the versionSpecIndex is even, it is enabled; if odd, disabled
+//                return (
+//                        versionSpecIndex % 2 == 0 ?
+//                                Math.min(latestFacebookAppVersion, latestSdkVersion) :
+//                                NO_PROTOCOL_AVAILABLE
+//                );
+//            }
+//        }
 
         return NO_PROTOCOL_AVAILABLE;
     }

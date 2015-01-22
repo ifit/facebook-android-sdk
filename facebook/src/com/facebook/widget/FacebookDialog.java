@@ -533,7 +533,7 @@ public class FacebookDialog {
             if (photo != null && !photo.isEmpty()) {
                 hasPhotos = true;
             }
-            if (video != null && !video.isEmpty()) {
+            if (video != null && video.length() > 0) {
                 hasVideo = true;
             }
         }
@@ -1296,7 +1296,7 @@ public class FacebookDialog {
         void validate() {
             super.validate();
 
-            if (videoAttachmentUrl == null || videoAttachmentUrl.isEmpty()) {
+            if (videoAttachmentUrl == null || videoAttachmentUrl.length() > 0) {
                 throw new FacebookException("Must specify at least one video.");
             }
         }

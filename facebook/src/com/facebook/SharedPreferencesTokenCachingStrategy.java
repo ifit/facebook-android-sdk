@@ -163,14 +163,14 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
                 return;
             }
         }
-        editor.apply();
+        editor.commit();
     }
 
     /**
      * Clears out all token information stored in this cache.
      */
     public void clear() {
-        cache.edit().clear().apply();
+        cache.edit().clear().commit();
     }
 
     private void serializeKey(String key, Bundle bundle, SharedPreferences.Editor editor)

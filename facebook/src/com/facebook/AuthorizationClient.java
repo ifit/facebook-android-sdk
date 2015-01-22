@@ -686,7 +686,7 @@ class AuthorizationClient implements Serializable {
                     Context.MODE_PRIVATE)
                 .edit()
                 .putString(WEB_VIEW_AUTH_HANDLER_TOKEN_KEY, token)
-                .apply();
+                .commit();
         }
 
         private String loadCookieToken() {
